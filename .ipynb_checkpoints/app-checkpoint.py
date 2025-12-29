@@ -36,13 +36,14 @@ st.write("Enter a player's stats to get a difficulty recommendation.")
 
 tab1, tab2 = st.tabs(["Single Player", "Batch Upload (CSV)"])
 
-# =========================
+
 # TAB 1 — SINGLE PLAYER
-# =========================
+
 with tab1:
     with st.form("player_form"):
         col1, col2 = st.columns(2)
 
+        # ---- Left column inputs ----
         with col1:
             kdRatio = st.number_input("K/D Ratio (kdRatio)", min_value=0.0, value=1.0, step=0.01)
             scorePerMinute = st.number_input("Score Per Minute", min_value=0.0, value=250.0, step=1.0)
@@ -50,17 +51,18 @@ with tab1:
             losses = st.number_input("Losses", min_value=0, value=10, step=1)
             timePlayed = st.number_input("Time Played (minutes)", min_value=0.0, value=500.0, step=10.0)
             gamesPlayed = st.number_input("Games Played", min_value=0, value=50, step=1)
-
+            shots = st.number_input("Shots", min_value=0, value=1000, step=10)
+        # ---- Right column inputs ----
         with col2:
             xp = st.number_input("XP", min_value=0, value=20000, step=100)
             level = st.number_input("Level", min_value=0, value=20, step=1)
             prestige = st.number_input("Prestige", min_value=0, value=0, step=1)
             headshots = st.number_input("Headshots", min_value=0, value=50, step=1)
             assists = st.number_input("Assists", min_value=0, value=30, step=1)
-            shots = st.number_input("Shots", min_value=0, value=1000, step=10)
-
-        hits = st.number_input("Hits (for accuracy calc: hits/shots)", min_value=0, value=int(shots * 0.25), step=1)
-        deaths = st.number_input("Deaths", min_value=0, value=gamesPlayed * 5, step=1)
+            deaths = st.number_input("Deaths", min_value=0, value=gamesPlayed * 5, step=1)
+            hits = st.number_input("Hits ",min_value=0,value=int(shots * 0.25),step=1)
+        # ---- Inputs that depend on shots must be AFTER shots ----
+        
 
         submitted = st.form_submit_button("Predict Difficulty")
 
@@ -117,9 +119,9 @@ with tab1:
             st.dataframe(X_one, use_container_width=True)
 
 
-# =========================
+
 # TAB 2 — BATCH UPLOAD
-# =========================
+
 with tab2:
     st.subheader("Upload CSV for Predictions")
     st.write("Upload a CSV file with player stats. ")
