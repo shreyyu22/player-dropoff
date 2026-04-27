@@ -199,4 +199,36 @@ Final prediction based on:
 - Manual input  
 - CSV batch upload  
 - Download results  
-- Charts and insights  
+- Charts and insights
+
+
+
+## 📌 Key Findings
+
+- Most players are Struggling or Balanced  
+- K/D ratio and accuracy are key indicators  
+- SQL helps identify drop-off risk and engagement patterns  
+- ML models classify players effectively  
+- Recommendations improve gameplay balance  
+  
+
+---
+
+## 🔮 Future Improvements
+
+- Real-time difficulty adjustment  
+- Reinforcement learning  
+- Player feedback integration  
+- Behavioral analytics  
+
+---
+
+## 👨‍💻 Author
+
+Shreyas Keragodu Vishwanath  
+MSc Data Analytics  
+
+---
+
+## ⭐ If you like this project
+Give it a ⭐ on GitHub!
