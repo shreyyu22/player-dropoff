@@ -73,69 +73,130 @@ This project uses gameplay data to provide **data-driven difficulty recommendati
 - hits, shots  
 - xp, level, prestige  
 
-Derived Feature:
--```text
---accuracy = hits / shots
 
-## Project Architecture
+## 🏗️ Project Architecture
 
--Dataset
-   ↓
--SQL Analysis Layer
-   ↓
--Exploratory Data Analysis (EDA)
-   ↓
--Feature Engineering
-   ↓
--K-Means Clustering
-   ↓
--Logistic Regression + Random Forest
-   ↓
--Majority Voting
-   ↓
--Difficulty Recommendation
-   ↓
--Streamlit Application
+Dataset  
+→ SQL Analysis Layer  
+→ Exploratory Data Analysis (EDA)  
+→ Feature Engineering  
+→ K-Means Clustering  
+→ Logistic Regression + Random Forest  
+→ Majority Voting  
+→ Difficulty Recommendation  
+→ Streamlit Application
 
-## SQL Analysis
+---
 
--SQL is used as a core analytical layer to extract insights from player data.
+## 🧮 SQL Analysis
 
-Key SQL Insights
+SQL is used as a **core analytical layer** to extract insights from player data.
 
-1. Performance Ranking
-Top players have significantly higher performance scores
-Quartile segmentation separates elite players from average players
-High-ranking players require increased difficulty
+### 🔍 Key SQL Insights
 
-2. Engagement vs Performance
-Low engagement players are mostly struggling
-High engagement players perform more consistently
-Low engagement players are at higher drop-off risk
+### 1. Performance Ranking
+- Top players have significantly higher performance scores  
+- Quartile segmentation separates elite players from average players  
+- High-ranking players require increased difficulty  
 
-3. Win Rate Analysis
-Win rate shows player consistency
-Combining win rate and score per minute improves performance evaluation
+---
 
-4. Accuracy Analysis
-Accuracy strongly correlates with player skill
-High accuracy players perform better overall
-Low accuracy players may need easier difficulty
+### 2. Engagement vs Performance
+- Low engagement players are mostly struggling  
+- High engagement players perform more consistently  
+- Low engagement players are at higher drop-off risk  
 
-5. Drop-Off Risk Detection
-Low playtime + low K/D ratio → high drop-off risk
-Early intervention can improve retention
+---
 
-6. Recommendation Validation
-Struggling → Decrease Difficulty
-Balanced → Keep Same
-Overperforming → Increase Difficulty
-Recommendations align with player behavior
+### 3. Win Rate Analysis
+- Win rate shows player consistency  
+- Combining win rate and score per minute improves performance evaluation  
+- Helps identify consistently strong players  
 
-7. Outlier Detection
-High outliers = expert players
-Low outliers = inactive/weak players
+---
 
-8. Player Scoring Index
-Multi-feature scoring gives better ranking
-Players classified into Beginner, Casual, Competitive, Elite
+### 4. Accuracy Analysis
+- Accuracy strongly correlates with player skill  
+- High accuracy players perform better overall  
+- Low accuracy players may need easier difficulty  
+
+---
+
+### 5. Drop-Off Risk Detection
+- Low playtime + low K/D ratio → high drop-off risk  
+- Early intervention can improve player retention  
+- Identifies players likely to quit early  
+
+---
+
+### 6. Recommendation Validation
+- Struggling → Decrease Difficulty  
+- Balanced → Keep Difficulty Same  
+- Overperforming → Increase Difficulty  
+- Recommendations align with player behavior  
+
+---
+
+### 7. Outlier Detection
+- High outliers represent expert players  
+- Low outliers represent inactive or struggling players  
+- Helps detect extreme performance patterns  
+
+---
+
+### 8. Player Scoring Index
+- Multi-feature scoring gives better ranking than single metrics  
+- Players can be classified into Beginner, Casual, Competitive, Elite  
+- Useful for matchmaking and difficulty balancing
+
+## 🤖 Machine Learning Approach
+
+### K-Means Clustering
+Segments players into:
+- Struggling  
+- Balanced  
+- Overperforming  
+
+### Logistic Regression
+- Baseline model  
+- High interpretability  
+
+### Random Forest
+- Captures complex patterns  
+- More robust predictions  
+
+### Majority Voting
+Final prediction based on:
+- K-Means  
+- Logistic Regression  
+- Random Forest  
+
+---
+
+## 📈 Model Performance
+
+| Model | Accuracy |
+|------|---------|
+| Logistic Regression | 98.3% |
+| Random Forest | 96.2% |
+
+---
+
+## 🎮 Difficulty Recommendation
+
+| Player Group | Recommendation |
+|------------|---------------|
+| Struggling | Decrease Difficulty |
+| Balanced | Keep Same |
+| Overperforming | Increase Difficulty |
+
+---
+
+## 🌐 Streamlit Application
+
+### Features
+- Single player prediction  
+- Manual input  
+- CSV batch upload  
+- Download results  
+- Charts and insights  
