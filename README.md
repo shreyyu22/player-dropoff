@@ -79,20 +79,63 @@ Derived Feature:
 
 ## Project Architecture
 
-Dataset
+-Dataset
    ↓
-SQL Analysis Layer
+-SQL Analysis Layer
    ↓
-Exploratory Data Analysis (EDA)
+-Exploratory Data Analysis (EDA)
    ↓
-Feature Engineering
+-Feature Engineering
    ↓
-K-Means Clustering
+-K-Means Clustering
    ↓
-Logistic Regression + Random Forest
+-Logistic Regression + Random Forest
    ↓
-Majority Voting
+-Majority Voting
    ↓
-Difficulty Recommendation
+-Difficulty Recommendation
    ↓
-Streamlit Application
+-Streamlit Application
+
+## SQL Analysis
+
+-SQL is used as a core analytical layer to extract insights from player data.
+
+Key SQL Insights
+
+1. Performance Ranking
+Top players have significantly higher performance scores
+Quartile segmentation separates elite players from average players
+High-ranking players require increased difficulty
+
+2. Engagement vs Performance
+Low engagement players are mostly struggling
+High engagement players perform more consistently
+Low engagement players are at higher drop-off risk
+
+3. Win Rate Analysis
+Win rate shows player consistency
+Combining win rate and score per minute improves performance evaluation
+
+4. Accuracy Analysis
+Accuracy strongly correlates with player skill
+High accuracy players perform better overall
+Low accuracy players may need easier difficulty
+
+5. Drop-Off Risk Detection
+Low playtime + low K/D ratio → high drop-off risk
+Early intervention can improve retention
+
+6. Recommendation Validation
+Struggling → Decrease Difficulty
+Balanced → Keep Same
+Overperforming → Increase Difficulty
+Recommendations align with player behavior
+
+7. Outlier Detection
+High outliers = expert players
+Low outliers = inactive/weak players
+
+8. Player Scoring Index
+Multi-feature scoring gives better ranking
+Players classified into Beginner, Casual, Competitive, Elite
